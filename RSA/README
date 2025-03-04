@@ -1,0 +1,85 @@
+============================================
+        RSA Encryption & Decryption
+============================================
+
+This program demonstrates RSA encryption and decryption using Python.
+
+--------------------------------------------
+         HOW THE RSA ALGORITHM WORKS
+--------------------------------------------
+1️⃣ **Key Generation:**
+   - Generate two large prime numbers (p, q).
+   - Compute `n = p × q`.
+   - Compute Euler's totient function `φ(n) = (p-1) × (q-1)`.
+   - Select `e` (public exponent) such that `1 < e < φ(n)`, and `gcd(e, φ(n)) = 1`.
+   - Compute `d`, the modular inverse of `e` mod `φ(n)` (private exponent).
+
+2️⃣ **Encryption:**
+   - Convert the message into an integer `M`.
+   - Compute ciphertext `C = M^e mod n` using the public key `(e, n)`.
+   - Send the encrypted message.
+
+3️⃣ **Decryption:**
+   - Compute `M = C^d mod n` using the private key `(d, n)`.
+   - Recover the original message.
+
+--------------------------------------------
+           INSTALLATION GUIDE
+--------------------------------------------
+Before running the script, install the required library:
+
+```sh
+pip install cryptography
+```
+
+--------------------------------------------
+           HOW TO RUN THE CODE
+--------------------------------------------
+1️⃣ **Run the Python script**
+```sh
+python rsa_encryption.py
+```
+
+2️⃣ **Generated Files**:
+   - `private_key.pem` → Stores the private key
+   - `public_key.pem` → Stores the public key
+   - `encrypted_message.txt` → Stores the encrypted message
+
+--------------------------------------------
+        HOW THE CODE WORKS
+--------------------------------------------
+1️⃣ **Key Pair Generation**
+   - The script generates a **2048-bit RSA key pair**.
+   - The **public key** is derived from the private key.
+
+2️⃣ **Encrypting a Message**
+   - A message is encrypted using the **public key**.
+   - OAEP padding ensures additional security.
+
+3️⃣ **Saving Encrypted Message**
+   - The encrypted message is saved as bytes in `encrypted_message.txt`.
+
+4️⃣ **Decrypting the Message**
+   - The **private key** is used to decrypt the message.
+   - The original message is recovered.
+
+--------------------------------------------
+              EXAMPLE OUTPUT
+--------------------------------------------
+```
+Original Message: Hello, this is a secret message!
+Encrypted Message (Hex): 2a3f...d9a5
+Decrypted Message: Hello, this is a secret message!
+```
+
+--------------------------------------------
+             USE CASES OF RSA
+--------------------------------------------
+✔ Secure message transmission
+✔ Digital signatures & authentication
+✔ Data encryption in secure systems
+
+--------------------------------------------
+             END OF DOCUMENT
+--------------------------------------------
+
